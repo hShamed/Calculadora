@@ -9,8 +9,8 @@ public class Calculator extends JFrame {
     private JButton deleteButton;
     private JButton divitionButton;
     private JButton multiplicationButton;
-    private JButton substractionButton;
-    private JButton plusButton;
+    private JButton subtractionButton;
+    private JButton additionButton;
     private JButton equalsButton;
     private JButton pointButton;
     private JButton zeroButton;
@@ -30,17 +30,31 @@ public class Calculator extends JFrame {
 
 
     public Calculator() {
+        // Put the main panel of the interface
         setContentPane(panel1);
+
+        // Put the default window options
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Put a title to the window
         setTitle("Calculadora");
+
+        // Adjust size
         setSize(400, 600);
+
+        // Locks size
         setResizable(false);
+
+        // Put in the middle of the screen
         setLocationRelativeTo(null);
+
+        // Show the window
         setVisible(true);
 
         zeroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Put '0' if an operation is active, else only add '0' to the string of numbers
                 if (operation) {
                     inputTextField.setText("");
                     inputTextField.setText("0");
@@ -54,6 +68,7 @@ public class Calculator extends JFrame {
         oneButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Put '1' if an operation is active, else only add '1' to the string of numbers
                 if (operation) {
                     inputTextField.setText("");
                     inputTextField.setText("1");
@@ -67,6 +82,7 @@ public class Calculator extends JFrame {
         twoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Put '2' if an operation is active, else only add '2' to the string of numbers
                 if (operation) {
                     inputTextField.setText("");
                     inputTextField.setText("2");
@@ -80,6 +96,7 @@ public class Calculator extends JFrame {
         threeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Put '3' if an operation is active, else only add '3' to the string of numbers
                 if (operation) {
                     inputTextField.setText("");
                     inputTextField.setText("3");
@@ -93,6 +110,7 @@ public class Calculator extends JFrame {
         fourButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Put '4' if an operation is active, else only add '4' to the string of numbers
                 if (operation) {
                     inputTextField.setText("");
                     inputTextField.setText("4");
@@ -106,6 +124,7 @@ public class Calculator extends JFrame {
         fiveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Put '5' if an operation is active, else only add '5' to the string of numbers
                 if (operation) {
                     inputTextField.setText("");
                     inputTextField.setText("5");
@@ -119,6 +138,7 @@ public class Calculator extends JFrame {
         sixButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Put '6' if an operation is active, else only add '6' to the string of numbers
                 if (operation) {
                     inputTextField.setText("");
                     inputTextField.setText("6");
@@ -132,6 +152,7 @@ public class Calculator extends JFrame {
         sevenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Put '7' if an operation is active, else only add '7' to the string of numbers
                 if (operation) {
                     inputTextField.setText("");
                     inputTextField.setText("7");
@@ -145,6 +166,7 @@ public class Calculator extends JFrame {
         eightButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Put '8' if an operation is active, else only add '8' to the string of numbers
                 if (operation) {
                     inputTextField.setText("");
                     inputTextField.setText("8");
@@ -158,6 +180,7 @@ public class Calculator extends JFrame {
         nineButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Put '9' if an operation is active, else only add '9' to the string of numbers
                 if (operation) {
                     inputTextField.setText("");
                     inputTextField.setText("9");
@@ -171,12 +194,16 @@ public class Calculator extends JFrame {
         pointButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (operation) {
-                    inputTextField.setText("");
-                    inputTextField.setText(".");
-                    operation = false;
-                } else {
-                    inputTextField.setText(inputTextField.getText() + ".");
+                // Put or add '.' if there is no other
+                // Put '0.' if an operation is active, else only add '.' to the string of numbers
+                if (inputTextField.getText().indexOf('.') == -1) {
+                    if (operation) {
+                        inputTextField.setText("");
+                        inputTextField.setText("0.");
+                        operation = false;
+                    } else {
+                        inputTextField.setText(inputTextField.getText() + ".");
+                    }
                 }
             }
         });
@@ -184,14 +211,19 @@ public class Calculator extends JFrame {
         divitionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Operation needs to be false
+                // If a type of operation is running, execute this, else add the input to the result
+                // Mark that the next operation is 'division'
+                if (operation == false) {
+                    if (typeOperation != 0) {
+                        doOperation(typeOperation);
+                    } else {
+                        result += Double.parseDouble(inputTextField.getText());
+                    }
 
-                if (typeOperation != 0) {
-                    doOperation(typeOperation);
-                } else {
-                    result += Double.parseDouble(inputTextField.getText());
+                    operation = true;
                 }
 
-                operation = true;
                 typeOperation = 1;
             }
         });
@@ -199,44 +231,59 @@ public class Calculator extends JFrame {
         multiplicationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Operation needs to be false
+                // If a type of operation is running, execute this, else add the input to the result
+                // Mark that the next operation is 'multiplication'
+                if (operation == false) {
+                    if (typeOperation != 0) {
+                        doOperation(typeOperation);
+                    } else {
+                        result += Double.parseDouble(inputTextField.getText());
+                    }
 
-                if (typeOperation != 0) {
-                    doOperation(typeOperation);
-                } else {
-                    result += Double.parseDouble(inputTextField.getText());
+                    operation = true;
                 }
 
-                operation = true;
                 typeOperation = 2;
             }
         });
 
-        substractionButton.addActionListener(new ActionListener() {
+        subtractionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Operation needs to be false
+                // If a type of operation is running, execute this, else add the input to the result
+                // Mark that the next operation is 'subtraction'
+                if (operation == false) {
+                    if (typeOperation != 0) {
+                        doOperation(typeOperation);
+                    } else {
+                        result += Double.parseDouble(inputTextField.getText());
+                    }
 
-                if (typeOperation != 0) {
-                    doOperation(typeOperation);
-                } else {
-                    result += Double.parseDouble(inputTextField.getText());
+                    operation = true;
                 }
 
-                operation = true;
                 typeOperation = 3;
             }
         });
 
-        plusButton.addActionListener(new ActionListener() {
+        additionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Operation needs to be false
+                // If a type of operation is running, execute this, else add the input to the result
+                // Mark that the next operation is 'addition'
+                if (operation == false) {
+                    if (typeOperation != 0) {
+                        doOperation(typeOperation);
+                    } else {
+                        result += Double.parseDouble(inputTextField.getText());
+                    }
 
-                if (typeOperation != 0) {
-                    doOperation(typeOperation);
-                } else {
-                    result += Double.parseDouble(inputTextField.getText());
+                    operation = true;
                 }
 
-                operation = true;
                 typeOperation = 4;
             }
         });
@@ -244,15 +291,13 @@ public class Calculator extends JFrame {
         equalsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // If a type of operation is running and active, execute the operation
                 if (typeOperation != 0 && operation == false) {
 
                     doOperation(typeOperation);
 
-                    inputTextField.setText(String.valueOf(result));
-
                     result = 0;
                     typeOperation = 0;
-                    operation = true;
                 }
             }
         });
@@ -260,6 +305,7 @@ public class Calculator extends JFrame {
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Resets variables to default
                 inputTextField.setText("0");
                 result = 0;
                 operation = true;
@@ -270,6 +316,7 @@ public class Calculator extends JFrame {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // Remove the last character of the input if it's not empty
                 String input =  inputTextField.getText();
 
                 if (input.isEmpty() || input.equals("0")) {
@@ -287,6 +334,7 @@ public class Calculator extends JFrame {
         plusSubsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                // If the input is not equal to zero, multiplies by -1 for change to positive or negative
                 double input = Double.parseDouble(inputTextField.getText());
 
                 if (input > 0 || input < 0) {
@@ -299,7 +347,7 @@ public class Calculator extends JFrame {
     }
 
     public void doOperation(int typeOperation){
-
+        // From the type, do an operation and show the result
         switch (typeOperation) {
             case 1:
                 result /= Double.parseDouble(inputTextField.getText());

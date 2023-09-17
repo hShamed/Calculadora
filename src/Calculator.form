@@ -206,7 +206,7 @@
                       <text value="÷"/>
                     </properties>
                   </component>
-                  <component id="ea47c" class="javax.swing.JButton" binding="plusButton">
+                  <component id="ea47c" class="javax.swing.JButton" binding="additionButton">
                     <constraints>
                       <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <minimum-size width="50" height="50"/>
@@ -324,7 +324,7 @@
                       <text value="×"/>
                     </properties>
                   </component>
-                  <component id="a2fe7" class="javax.swing.JButton" binding="substractionButton">
+                  <component id="a2fe7" class="javax.swing.JButton" binding="subtractionButton">
                     <constraints>
                       <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <minimum-size width="50" height="50"/>
