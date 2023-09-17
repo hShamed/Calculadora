@@ -180,44 +180,78 @@ public class Calculator extends JFrame {
             }
         });
 
+        divitionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                if (typeOperation != 0) {
+                    doOperation(typeOperation);
+                } else {
+                    result += Double.parseDouble(inputTextField.getText());
+                }
+
+                operation = true;
+                typeOperation = 1;
+            }
+        });
+
+        multiplicationButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                if (typeOperation != 0) {
+                    doOperation(typeOperation);
+                } else {
+                    result += Double.parseDouble(inputTextField.getText());
+                }
+
+                operation = true;
+                typeOperation = 2;
+            }
+        });
+
+        substractionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                if (typeOperation != 0) {
+                    doOperation(typeOperation);
+                } else {
+                    result += Double.parseDouble(inputTextField.getText());
+                }
+
+                operation = true;
+                typeOperation = 3;
+            }
+        });
+
         plusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+
+                if (typeOperation != 0) {
+                    doOperation(typeOperation);
+                } else {
+                    result += Double.parseDouble(inputTextField.getText());
+                }
+
                 operation = true;
                 typeOperation = 4;
-
-                result += Double.parseDouble(inputTextField.getText());
             }
         });
 
         equalsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (typeOperation != 0) {
-                    switch (typeOperation) {
-                        case 1:
-                            result /= Double.parseDouble(inputTextField.getText());
-                            break;
-
-                        case 2:
-                            result *= Double.parseDouble(inputTextField.getText());
-                            break;
-
-                        case 3:
-                            result -= Double.parseDouble(inputTextField.getText());
-                            break;
-
-                        case 4:
-                            result += Double.parseDouble(inputTextField.getText());
-                            break;
-
-                        default:
-                    }
+                if (typeOperation != 0 && operation == false) {
+                    
+                    doOperation(typeOperation);
 
                     inputTextField.setText(String.valueOf(result));
 
                     result = 0;
                     typeOperation = 0;
+                    operation = true;
                 }
             }
         });
@@ -228,6 +262,7 @@ public class Calculator extends JFrame {
                 inputTextField.setText("0");
                 result = 0;
                 operation = true;
+                typeOperation = 0;
             }
         });
 
@@ -247,6 +282,32 @@ public class Calculator extends JFrame {
                 operation = true;
             }
         });
+    }
+
+    public void doOperation(int typeOperation){
+
+        switch (typeOperation) {
+            case 1:
+                result /= Double.parseDouble(inputTextField.getText());
+                break;
+
+            case 2:
+                result *= Double.parseDouble(inputTextField.getText());
+                break;
+
+            case 3:
+                result -= Double.parseDouble(inputTextField.getText());
+                break;
+
+            case 4:
+                result += Double.parseDouble(inputTextField.getText());
+                break;
+
+            default:
+        }
+
+        inputTextField.setText(String.valueOf(result));
+
     }
 
     public static void main(String[] args) {
