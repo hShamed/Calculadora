@@ -34,6 +34,7 @@ public class Calculator extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Calculadora");
         setSize(400, 600);
+        setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
 
@@ -244,7 +245,7 @@ public class Calculator extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if (typeOperation != 0 && operation == false) {
-                    
+
                     doOperation(typeOperation);
 
                     inputTextField.setText(String.valueOf(result));
@@ -280,6 +281,19 @@ public class Calculator extends JFrame {
                 inputTextField.setText(input);
 
                 operation = true;
+            }
+        });
+
+        plusSubsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                double input = Double.parseDouble(inputTextField.getText());
+
+                if (input > 0 || input < 0) {
+                    input *= -1;
+
+                    inputTextField.setText(String.valueOf(input));
+                }
             }
         });
     }
