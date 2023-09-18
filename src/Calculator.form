@@ -65,7 +65,8 @@
                 </constraints>
                 <properties>
                   <background color="-14540279"/>
-                  <caretColor color="-1"/>
+                  <caretColor color="-14540279"/>
+                  <editable value="false"/>
                   <font name="URW Gothic" size="45" style="1"/>
                   <foreground color="-10711257"/>
                   <horizontalAlignment value="11"/>

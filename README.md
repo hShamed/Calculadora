@@ -3,11 +3,18 @@
 <p>
  <img src="https://img.shields.io/badge/STATUS-DESARROLLO-yellow">
 </p>
+
 <hr>
+
 <p>
   Calculadora de operaciones básicas de la aritmética, 
     presenta una interfaz gráfica oscura.
 </p>
+
+<img src="media/ss_calculator1.webp" width="400" align="center">
+<img src="media/ss_calculator2.webp" width="400" align="center">
+<br>
+<img src="media/demo_calculator.gif" width="600" align="center">
 
 <br> 
 
