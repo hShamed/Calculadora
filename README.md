@@ -1,7 +1,7 @@
 <h1 align="center">Calculadora</h1>
 <h3 align="center">✖️➕➖➗</h3>
 <p>
- <img src="https://img.shields.io/badge/STATUS-DESARROLLO-GREEN">
+ <img src="https://img.shields.io/badge/STATUS-COMPLETADO-GREEN">
 </p>
 
 <hr>
